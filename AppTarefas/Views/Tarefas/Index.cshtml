@@ -1,30 +1,34 @@
-﻿@Model List<App.Tarefas.Models.Tarefa>
-	@{
-		ViewData["Title"] = "Lista de Tarefas";
-	}
-	<h1 class="display-4 fw-bold">Lista de Tarefas</h1>
-	<a class="btn btn-primary btn-lg" asp-controller="Tarefas" asp-action="Create">Nova Tarefa</a>
+﻿@model List<AppTarefas.Models.Tarefa>
+@{
+	ViewData["Title"] = "Lista de Tarefas";
+}
+<h1 class="display-4 fw-bold">Lista de Tarefas</h1>
+<a class="btn btn-primary btn-lg" asp-controller="Tarefas" asp-action="Create">Nova Tarefa</a>
 
-	<table class="table table-bordered table-striped mt-3">
-		<thead>
+<table class="table table-bordered table-striped mt-3">
+	<thead>
+		<tr>
+			<th>ID</th>
+			<th>Título</th>
+			<th>Concluída</th>
+			<th>Ações</th>
+		</tr>
+	</thead>
+
+	<tbody>
+		@foreach (var tarefa in Model)
+		{
 			<tr>
-				<th>ID</th>
-				<th>Título</th>
-				<th>Concluída</th>
-				<th>Ações</th>
+				<td>@tarefa.TarefaId</td>
+				<td>@tarefa.Titulo</td>
+				<td>@(tarefa.Concluida ? "Sim" : "Não")</td>
+				<td>
+					<a asp-controller="Tarefas" asp-action="Details" aps-route-id="@tarefa.TarefaId" class="btn btn-info btn-dm me-2">Detalhes</a>
+					<a asp-controller="Tarefas" asp-action="Edit" aps-route-id="@tarefa.TarefaId" class="btn btn-warning btn-dm me-2">Editar</a>
+					<a asp-controller="Tarefas" asp-action="Delete" aps-route-id="@tarefa.TarefaId" class="btn btn-danger btn-dm me-2">Deletar</a>
+				</td>
 			</tr>
-		</thead>
+		}
 
-		<tbody>
-			@foreach (var tarefa in Model)
-			{
-				<tr>
-					<td>@tarefa.TarefaId</td>
-					<td>@tarefa.Titulo</td>
-					<td>@tarefa.Concluida</td>
-					<td></td>
-				</tr>
-			}
-
-		</tbody>
-	</table>
+	</tbody>
+</table>
