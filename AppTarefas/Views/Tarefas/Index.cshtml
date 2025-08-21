@@ -1,4 +1,26 @@
-﻿@{
-	ViewData["Title"] = "Lista de Tarefas";
-}
-<h1>Lista de Tarefas</h1>
+﻿@Model List<App.Tarefas.Models.Tarefa>
+	@{
+		ViewData["Title"] = "Lista de Tarefas";
+	}
+	<h1 class="display-4 fw-bold">Lista de Tarefas</h1>
+	<a class="btn btn-primary btn-lg" asp-controller="Tarefas" asp-action="Create">Nova Tarefa</a>
+
+	<table class="table table-bordered table-striped mt-3">
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>Título</th>
+				<th>Concluída</th>
+				<th>Ações</th>
+			</tr>
+		</thead>
+
+		<tbody>
+			<tr>
+				<td>ID</td>
+				<td>Título</td>
+				<td>Concluída</td>
+				<td>Ações</td>
+			</tr>
+		</tbody>
+	</table>
