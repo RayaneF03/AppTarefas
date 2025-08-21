@@ -16,11 +16,15 @@
 		</thead>
 
 		<tbody>
-			<tr>
-				<td>ID</td>
-				<td>Título</td>
-				<td>Concluída</td>
-				<td>Ações</td>
-			</tr>
+			@foreach (var tarefa in Model)
+			{
+				<tr>
+					<td>@tarefa.TarefaId</td>
+					<td>@tarefa.Titulo</td>
+					<td>@tarefa.Concluida</td>
+					<td></td>
+				</tr>
+			}
+
 		</tbody>
 	</table>
